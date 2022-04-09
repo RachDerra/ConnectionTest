@@ -5,7 +5,6 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
                     <h1>Page de connexion</h1>
-                    <span class="subheading">Vous avez des questions ? J'ai les réponses.</span>
                 </div>
             </div>
         </div>
@@ -16,16 +15,8 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-            <span class="subheading">Voulez-vous rester à jour? N'hésitez pas à publier votre blog et à consulter la liste des blogs!</span>
                 <div class="my-5">
-                  <div id="error_explanation">
-                  <h2><%= @user.errors.count %> erreur se produisent.</h2>
-                  <ul>
-                    <% @user.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-                  </ul>
-                  </div>
+                 
                 <%= form_with(scope: :session, local: true,url: sessions_path, name: "sentMessage", id: "contactForm") do |form| %>
                     <div class="form-floating">
                         <%= form.email_field :email, placeholder: "Entrez votre e-mail...", class: "form-control", id: "inputTitle" %>
@@ -36,7 +27,7 @@
                         <label for="inputTitle">Password</label>
                     </div>
                     <br />
-                    <%= form.submit "Log in" nil, class: "btn btn-primary text-uppercase" %>
+                    <%= form.submit nil, class: "btn btn-primary text-uppercase" %>
                 <% end %>
                 </div>   
             </div>

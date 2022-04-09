@@ -4,7 +4,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Page de connexion</h1>
+                    <h1>Page de création de l'utilisateur</h1>
                     <span class="subheading">Vous avez des questions ? J'ai les réponses.</span>
                 </div>
             </div>
@@ -27,11 +27,8 @@
                   <% end %>
                   </ul>
                   </div>
+                  <% end %>
                 <%= form_with(model: @user, local: true, name: "sentMessage", id: "contactForm") do |form| %>
-                    <div class="form-floating">
-                        <%= form.text_field :name, placeholder: "Entrez votre nom...", class: "form-control", id: "inputTitle" %>
-                        <label for="inputTitle">Name</label>
-                    </div>
                     <div class="form-floating">
                         <%= form.text_field :name, placeholder: "Entrez votre nom...", class: "form-control", id: "inputTitle" %>
                         <label for="inputTitle">Name</label>
@@ -49,7 +46,7 @@
                         <label for="inputTitle">Password confirmation</label>
                     </div>
                     <br />
-                    <%= form.submit "Create my account" nil, class: "btn btn-primary text-uppercase" %>
+                    <%= form.submit nil, class: "btn btn-primary text-uppercase" %>
                 <% end %>
                 </div>
             </div>
