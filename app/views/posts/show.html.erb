@@ -1,0 +1,33 @@
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(<%= asset_path 'step3.jpg' %>)">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Écran de détails</h1>
+                    <span class="subheading">pour une double confirmation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+            <span class="subheading">confirmez deux fois le contenu que vous avez posté,
+                si nécessaire, modifiez-les pour qu'ils correspondent aux résultats escomptés !</span>
+                <div class="my-5">
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
