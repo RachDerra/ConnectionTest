@@ -20,9 +20,10 @@
           <div class="my-5">
           <%= form_with(model: @post, local: true) do |form| %>
             <%= form.hidden_field :content %>
-            <p>Text:<%= @post.content %></p>
-            <%= form.submit  "register" %>
+            <p>Text : <%= @post.content %></p>
+            <%= form.submit  "register", class: "btn btn-primary text-uppercase" %>
             <% end %>
+            <br>
             <%= link_to 'Return', :back %>
           </div>
             </div>

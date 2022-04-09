@@ -18,15 +18,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="index.html">Application tweet</a>
+            <a class="navbar-brand" href="<%=posts_path%>">Application tweet</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                  <li class="nav-item"><%= link_to "liste des postes", posts_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
-                  <li class="nav-item"><%= link_to "nouveau poste", new_post_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                  <% if logged_in? %>
+                    <li class="nav-item"><%= link_to "liste des postes", posts_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item"><%= link_to "nouveau poste", new_post_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item"><%= link_to "Détails de l'utilisateur en cours", user_path(current_user.id), class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item"><%= link_to "Logout", session_path(current_user.id), method: :delete, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                  <% else %>
+                    <li class="nav-item"><%= link_to "Créer un utilisateur", new_user_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item"><%= link_to "Login", new_session_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                  <% end %>
                 </ul>
             </div>
         </div>
@@ -36,13 +43,13 @@
     <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
 
-    <% if logged_in? %>
+    <!--<% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
-    <% end %>
+    <% end %>-->
     
     <%= yield %>
     <footer class="border-top">
