@@ -14,6 +14,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bcrypt'
+gem 'rexml'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -41,4 +42,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :development do
+  gem 'letter_opener_web'
 end

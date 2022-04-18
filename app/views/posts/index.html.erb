@@ -15,7 +15,7 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-        <p id="notice"><%= notice %></p>
+       <!-- <p id="notice"><%= notice %></p>-->
         <% @posts.each do |post| %>
           <!-- Post preview-->
             <div class="post-preview">
@@ -23,7 +23,7 @@
                 <h2 class="post-title"><%= post.content %></h2>
               <% end %>
               <p class="post-meta">Publié par
-                <a href="<%=user_path(current_user.id)%>"><%=current_user.name%> </a>
+                <a href="<%=user_path(post.user.id)%>"> <%=post.user.name%> </a>
                 le : <%= post.created_at %>
               </p>
               <p class="post-meta">

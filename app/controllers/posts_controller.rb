@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
+  before_action :current_user
+
   def index
     @posts = Post.all.order("updated_at desc")
   end
 
   def show
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
   def new

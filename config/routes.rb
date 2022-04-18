@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  resources :contacts
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  
   root "posts#index"
  # get '/', to: 'posts#index'
 
  resources :users, only: [:new, :create, :show]
 
  resources :sessions, only: [:new, :create, :destroy]
+
+ resources :favorites, only: [:create, :destroy]
 
   resources :posts do
     collection do
