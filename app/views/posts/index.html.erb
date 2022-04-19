@@ -21,6 +21,8 @@
             <div class="post-preview">
               <%= link_to post_path(post) do %>
                 <h2 class="post-title"><%= post.content %></h2>
+                
+                <%= image_tag(post.image.url) if post.image && post.image.url %>
               <% end %>
               <p class="post-meta">Publié par
                 <a href="<%=user_path(post.user.id)%>"> <%=post.user.name%> </a>

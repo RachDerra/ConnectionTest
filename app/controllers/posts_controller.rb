@@ -44,7 +44,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice:"J'ai supprimé le blog !"
+    redirect_to posts_path, notice:"J'ai supprimé le post !"
   end
 
   def confirm
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :image, :image_cache)
   end
 
 end
