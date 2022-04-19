@@ -23,6 +23,10 @@
   <strong>Content : </strong>
   <%= @post.content %>
 </p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @post.image.url %>
+</p>
 <% unless @post.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'dislike', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>

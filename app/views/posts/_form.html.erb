@@ -32,6 +32,14 @@
                         <label for="inputTitle">Content</label>
                     </div>
                     <br />
+                    <div class="field">
+                        <%= form.label :image %>
+                        <!-- Au retour de l'écran de confirmation vers le nouvel écran de création, -->
+                        <!-- Description pour afficher l'image téléchargée -->
+                        <%= image_tag(post.image.url) if post.image && post.image.url %>
+                        <%= form.file_field :image %>
+                        <%= form.hidden_field :image_cache %>
+                    </div>
                     <%= form.submit nil, class: "btn btn-primary text-uppercase" %>
                 <% end %>
                 </div>

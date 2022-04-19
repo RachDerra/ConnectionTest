@@ -12,7 +12,7 @@
     </div>
 </header>
 <!-- Main Content-->
-<main class="mb-4">
+<!--<main class="mb-4">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
@@ -29,4 +29,17 @@
             </div>
         </div>
     </div>
-</main>
+</main>-->
+<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+  <!-- Sur l'écran de confirmation description pour afficher l'image téléchargée -->
+  <%= form.hidden_field :content %>
+  <p>Text : <%= @post.content %></p>
+  <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "Poster" %>
+<% end %>
+
+<%= form_with(model:@post, url:new_post_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "Retourner", name: "back" %>
+<% end %>
