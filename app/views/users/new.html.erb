@@ -50,7 +50,7 @@
                         <%= form.label :image %>
                         <!-- Au retour de l'écran de confirmation vers le nouvel écran de création, -->
                         <!-- Description pour afficher l'image téléchargée -->
-                        <%= image_tag(user.image.url) if user.image && user.image.url %>
+                        <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
                         <%= form.file_field :image %>
                         <%= form.hidden_field :image_cache %>
                     </div>

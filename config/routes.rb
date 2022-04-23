@@ -22,4 +22,5 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+  
 end
