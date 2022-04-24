@@ -24,8 +24,9 @@
                     </p>
                     <p>
                       <strong>Image:</strong>
-                      <%= image_tag @user.image.url %>
+                      <%= image_tag @user.image.url if @user.image && @user.image.url %>
                     </p>
+                    <%= link_to 'Edit', edit_user_path(@user.id) %> |
                     <%= link_to 'Back', posts_path %>
                 </div>
             </div>

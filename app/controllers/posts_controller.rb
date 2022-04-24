@@ -18,13 +18,23 @@ class PostsController < ApplicationController
   def edit
   end
 
+  #if @post.user_id == current_user.id 
+  #  def edit
+  #  end
+  #else
+  #  redirect_to posts_path, notice: "Impossible d'afficher cette page !"
+  #end
+  
+
   def create
     @post = current_user.posts.build(post_params)
     if params[:back]
       render :new
     else
       if @post.save
-        redirect_to posts_path, notice: "On a créé un blog !"
+        PostMailer.post_mail(@post).deliver
+        redirect_to letter_opener_web_path, notice: 'Post was successfully created.'
+        #redirect_to posts_path, notice: "On a créé un blog !"
       else
         render :new
       end
