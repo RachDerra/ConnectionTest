@@ -23,11 +23,15 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update(user_params)
-            redirect_to user_path(@user.id), notice: "J'ai modifié l'utilisateur !"
-          else
-            render :edit
-        end
+        if @user.id == current_user.id 
+            if @user.update(user_params)
+                redirect_to user_path(@user.id), notice: "J'ai modifié l'utilisateur !"
+            else
+                render :edit
+            end
+        else
+            redirect_to posts_path, notice: "Impossible de modifier l'utilisateur !"
+        end     
     end
 
     private

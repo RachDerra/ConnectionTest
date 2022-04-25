@@ -29,7 +29,7 @@
                     </p>
                     <% unless @post.user_id == current_user.id %>
                       <% if @favorite.present? %>
-                        <%= link_to 'dislike', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+                        <%= link_to 'dislike', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-warning' %>
                       <% else %>
                         <%= link_to 'like', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
                       <% end %>
@@ -37,7 +37,7 @@
                     <% if @post.user_id == current_user.id %>
                        <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %> |
                     <% end  %>
-                    <%= link_to 'Back', posts_path, class: 'btn btn-danger' %>
+                    <%= link_to 'Back', posts_path, class: 'btn btn-dark' %>
                 </div>
             </div>
         </div>
