@@ -11,6 +11,10 @@ class PostsController < ApplicationController
     @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
+  def favorite_list
+    @favorites = current_user.favorites
+  end
+
   def new
     @post = Post.new
   end
@@ -18,14 +22,22 @@ class PostsController < ApplicationController
   def edit
   end
 
+  #if @post.user_id == current_user.id 
+  #  def edit
+  #  end
+  #else
+  #  redirect_to posts_path, notice: "Impossible d'afficher cette page !"
+  #end
+  
+
   def create
-    # @post = Post.new(post_params)
-    # @post.user_id = current_user.id
     @post = current_user.posts.build(post_params)
     if params[:back]
       render :new
     else
       if @post.save
+        #PostMailer.post_mail(@post).deliver
+        #redirect_to letter_opener_web_path, notice: 'Post was successfully created.'
         redirect_to posts_path, notice: "On a créé un blog !"
       else
         render :new
@@ -34,11 +46,15 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to posts_path, notice: "J'ai modifié le blog !"
+    if @post.user_id == current_user.id 
+        if @post.update(post_params)
+          redirect_to posts_path, notice: "J'ai modifié le blog !"
+        else
+          render :edit
+        end
     else
-      render :edit
-    end
+        redirect_to posts_path, notice: "Impossible d'afficher cette page !"
+    end  
   end
   
 

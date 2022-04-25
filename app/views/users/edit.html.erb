@@ -4,7 +4,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Page de création de l'utilisateur</h1>
+                    <h1>Page de modification de l'utilisateur</h1>
                     
                 </div>
             </div>
@@ -18,17 +18,8 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
             
                 <div class="my-5">
-                  <% if @user.errors.any? %>
-                  <div id="error_explanation">
-                  <h2><%= pluralize(@user.errors.count) %> erreur se produisent.<%= @user.name %> from being saved : </h2>
-                  <ul>
-                    <% @user.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-                  </ul>
-                  </div>
-                  <% end %>
-                <%= form_with(model: @user, local: true, name: "sentMessage", id: "contactForm") do |form| %>
+                 
+                <%= form_with(model: @user, local: true, url: user_path, name: "sentMessage", id: "contactForm") do |form| %>
                     <div class="form-floating">
                         <%= form.text_field :name, placeholder: "Entrez votre nom...", class: "form-control", id: "inputTitle" %>
                         <label for="inputTitle">Name</label>

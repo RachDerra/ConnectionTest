@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root "posts#index"
  # get '/', to: 'posts#index'
 
- resources :users, only: [:new, :create, :show]
+ resources :users, only: [:new, :create, :show, :edit, :update]
 
  resources :sessions, only: [:new, :create, :destroy]
 
@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       post :confirm
+      get :favorite_list
+
     end
   end
+
 end
