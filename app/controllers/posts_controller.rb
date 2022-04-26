@@ -36,9 +36,9 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
-        #PostMailer.post_mail(@post).deliver
-        #redirect_to letter_opener_web_path, notice: 'Post was successfully created.'
-        redirect_to posts_path, notice: "On a créé un blog !"
+        PostMailer.post_mail(@post).deliver
+        redirect_to letter_opener_web_path, notice: 'Post was successfully created.'
+        #redirect_to posts_path, notice: "On a créé un blog !"
       else
         render :new
       end
